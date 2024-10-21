@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    run-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/setup-pages@v3
+
+      - name: Deploy to GitHub Pages
+        run: |
+          mkdir -p public
+          cp -r * public
+          touch public/.nojekyll
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Publish
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          guthub_token: ${{secretes.GITHUB_TOKEN}}
+          publish_dir: ./public
