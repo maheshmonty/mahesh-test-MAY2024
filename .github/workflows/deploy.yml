@@ -30,4 +30,4 @@ jobs:
           # Add your deployment script here
           # For example:
           echo "it will deploy here"
-          ./deploy.sh
+          # ./deploy.sh
