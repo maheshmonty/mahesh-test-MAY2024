@@ -1,0 +1,33 @@
+name: Deploy to Acceptance
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install http-server
+        run: npm install -g http-server
+
+      - name: Start http-server
+        run: http-server -p 8080
+
+      - name: Deploy to Acceptance Environment
+        run: |
+          echo "Deploying to acceptance environment..."
+          # Add your deployment script here
+          # For example:
+          echo "it will deploy here"
+          ./deploy.sh
