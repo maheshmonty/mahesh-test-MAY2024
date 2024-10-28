@@ -28,5 +28,5 @@ jobs:
         python -m pip install --upgrade pip
         # pip install -r requirements.txt
 
-    - name: Run test.py
-      run: python test.py
+    - name: Run test2.py
+      run: python test2.py
