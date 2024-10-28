@@ -1,1 +1,32 @@
+name: CI
 
+on:
+  push:
+    branches:
+      - Mahesh-Test2
+  pull_request:
+    branches:
+      - Mahesh-Test2
+
+jobs:
+  run-fetch:
+    runs-on: ubuntu-latest
+
+    environment: acceptance
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.13.0'  # Specify the Python version you need
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run fetch.py
+      run: python test.py
