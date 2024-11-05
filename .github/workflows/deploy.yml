@@ -3,7 +3,7 @@ name: Deploy to Acceptance
 on:
   push:
     branches:
-      - master
+      - Acceptance-Env
 
 jobs:
   deploy:
@@ -27,10 +27,10 @@ jobs:
       - name: Start http-server
         run: http-server -p 8080
 
-      - name: Deploy to Acceptance Environment
-        run: |
-          echo "Deploying to acceptance environment..."
+      #- name: Deploy to Acceptance Environment
+       # run: |
+        #  echo "Deploying to acceptance environment..."
           # Add your deployment script here
           # For example:
-          echo "it will deploy here"
-          ./deploy.sh
+         # echo "it will deploy here"
+          #./deploy.sh
