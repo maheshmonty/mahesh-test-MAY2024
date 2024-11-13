@@ -1,36 +1,20 @@
-name: Deploy to Acceptance
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - Acceptance-Env
+      - main  # Set this to your default branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Print working directory
-        run: pwd
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-
-      - name: Install http-server
-        run: npm install -g http-server
-
-      - name: Start http-server
-        run: http-server -p 8080
-
-      #- name: Deploy to Acceptance Environment
-       # run: |
-        #  echo "Deploying to acceptance environment..."
-          # Add your deployment script here
-          # For example:
-         # echo "it will deploy here"
-          #./deploy.sh
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .  # This should point to the directory containing your test.html file
